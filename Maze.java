@@ -45,6 +45,8 @@ class StyleOptionsPanel extends JPanel{
 		add(field);
 		add(saying);
 		b1 = new JButton("Enter");
+		
+		//Below code: when click the JButton, the first JFrame (dimensions) will close and sets the second JFrame (window) visible
 		b1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				if(e.getSource()==b1){
@@ -61,8 +63,8 @@ class StyleOptionsPanel extends JPanel{
 	}
 class StyleListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
-			dimension=Integer.parseInt(field.getText());
-			
+		//dimension is the integer that user inputed from the textfield in first JFrame (dimensions). 	
+			dimension=Integer.parseInt(field.getText());	
 		}
 }
 private class StyleListener2 implements ActionListener{
@@ -73,6 +75,7 @@ private class StyleListener2 implements ActionListener{
 }
 }
 public class Maze extends JPanel implements Runnable{
+	//Dont know why I initialized these JFrames up here.
     static JFrame dimensions=new JFrame("Set Dimensions");
     static JFrame window = new JFrame("DFS Random Maze Solve");
     public static int dimension=StyleOptionsPanel.dimension;
@@ -80,11 +83,12 @@ public class Maze extends JPanel implements Runnable{
 	//PRECONDITION: user must enter integer dimensions
 	//POST CONDITION: creates a maze of specified dimension and solves using DFS.
     public static void main(String[] args) {
-    	
+    	//Could've initialized JFrame dimensions here.
     	dimensions.getContentPane().add(new StyleOptionsPanel());
     	dimensions.pack();
     	dimensions.setVisible(true);
-    	
+	    
+    	//Could've initialized JFrame window here.
         window.setContentPane(new Maze());
         window.pack();
         window.setLocation(120, 80);
@@ -111,7 +115,10 @@ public class Maze extends JPanel implements Runnable{
     final static int visited = 4;
 
 
-    Color[] color;          // an array of colors to be used for our maze values defined earlier.
+    Color[] color; // an array of colors to be used for our maze values defined earlier.
+	
+	//*From earlier code above* ; rows and columns will equal to *dimension* that user inputed.
+	
     int rows=dimension;          // the row of cells in a maze, including the walls
     int columns=dimension;       // number of column cells in a maze, including the walls
     int border = 0;         // number of pixels separating maze and non-maze parts  
