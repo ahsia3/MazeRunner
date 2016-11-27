@@ -28,7 +28,7 @@ public class Maze extends JPanel implements Runnable{
 	//PRECONDITION: user must enter integer dimensions
 	//POST CONDITION: creates a maze of specified dimension and solves using DFS.
     public static void main(String[] args) {
-
+    	File.main(args);
         window.setContentPane(new Maze());
         window.pack();
         window.setLocation(120, 80);

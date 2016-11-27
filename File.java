@@ -19,7 +19,7 @@ public class File {
     	dimensions.getContentPane().add(new StyleOptionsPanel());
     	dimensions.pack();
     	dimensions.setVisible(true);
-
+    	
 	}
 
 }
@@ -63,7 +63,7 @@ class StyleOptionsPanel extends JPanel{
 				//instead of *dimensions.dispose()*, could use dimensions.setVisible(false);
 					dimensions.setVisible(false);
 					window.setVisible(true);
-					 new Thread().start();
+					
 				}
 			}
 		});
