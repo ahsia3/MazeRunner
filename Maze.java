@@ -22,11 +22,10 @@ class StyleOptionsPanel extends JPanel{
 	public static JButton b1;
 	public static int dimension;
 	public static JFrame dimensions=Maze.dimensions;
-	StyleListener listener1=new StyleListener();
 	public static JFrame window=Maze.window;
 	public StyleOptionsPanel(){
 		
-		
+		StyleListener listener1=new StyleListener();
 		field= new JTextField(); 
 		field.setPreferredSize(new Dimension(50,50));
 		field.addActionListener(listener1);
