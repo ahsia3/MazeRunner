@@ -157,7 +157,7 @@ public class Maze extends JPanel implements Runnable{
         };
         setBackground(color[bgcode]);
         setPreferredSize(new Dimension(cellsize*columns, cellsize*rows));
-    //  new Thread(this).start();
+        new Thread(this).start();
     }
 
     // Will prevent paint from being called two times, this method paints the maze and helps with Drawing
