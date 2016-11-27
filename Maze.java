@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 import javax.swing.*;
 
 
@@ -22,18 +23,21 @@ public class Maze extends JPanel implements Runnable{
     static JFrame window = new JFrame("DFS Random Maze Solve");
     
     	//To reference dimension (user inputed) from StyleOptionsPanel class to Maze class.
-    public static int dimension=StyleOptionsPanel.dimension;
+     static int a=StyleOptionsPanel.a;
     
     // Main method to run the program, 
 	//PRECONDITION: user must enter integer dimensions
 	//POST CONDITION: creates a maze of specified dimension and solves using DFS.
-    public static void main(String[] args) {
+    public static void main(String[] args){
     	File.main(args);
+    	
+    
         window.setContentPane(new Maze());
         window.pack();
-        window.setEnabled(false);
         window.setLocation(120, 80);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      
+      
     }
     
 
@@ -59,8 +63,8 @@ public class Maze extends JPanel implements Runnable{
     
     	//*From File class code* ; rows and columns will equal to *dimension* that user inputed.
     
-    int rows=dimension;          // the row of cells in a maze, including the walls
-    int columns=dimension;       // number of column cells in a maze, including the walls
+    int rows=a;          // the row of cells in a maze, including the walls
+   int columns=a;       // number of column cells in a maze, including the walls
     int border = 0;         // number of pixels separating maze and non-maze parts  
     int solvespeed = 10;    // we can adjust this value to make is easier to see how the maze is solving.
     int createspeed = 2;	// the same speed adjustment, but for the creation of the maze
@@ -81,7 +85,9 @@ public class Maze extends JPanel implements Runnable{
     // We can retrieve user input for the size of the maze they wish to solve.
 
     // Maze constructor
-    public Maze() {
+
+ public static Thread t;
+	public Maze() {
         color = new Color[] {
             new Color(0,0,0),
             new Color(0,51,153),
@@ -91,10 +97,18 @@ public class Maze extends JPanel implements Runnable{
         };
         setBackground(color[bgcode]);
         setPreferredSize(new Dimension(cellsize*columns, cellsize*rows));
+      t=new Thread(this);
       
-       
-        	new Thread(this).start();
-        
+    //   new Thread(this).start();
+   /*    try {
+		Thread a= new Thread();
+		Thread.sleep(5000);
+		a.getPriority();
+		a.start();
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		Thread.currentThread().interrupt();
+	}*/
     }
 
     // Will prevent paint from being called two times, this method paints the maze and helps with Drawing
@@ -252,11 +266,26 @@ public class Maze extends JPanel implements Runnable{
         }
     }
 
-    
+   public void Thread(){
+	 t.start();
+	/*   try {
+		java.lang.Thread.sleep(5000);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}*/
+   }
+   public void Thread2(){
+	  
+   }
     public void run() {
         //	the purpose of this method is to create a thread that creates a maze and solves it.
+    	//Thread();
+    	
         CreateMaze();
+       
         MazeSolver(1,1);
+        
     }
   
 }

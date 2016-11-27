@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
+import java.util.concurrent.CountDownLatch;
 
 
 public class File {
@@ -28,11 +28,14 @@ class StyleOptionsPanel extends JPanel{
 	private JLabel saying;
 	public static JButton b1;
 	public static int dimension;
-	
+	public static int a;
 //added these fields from Maze class to this class to open/close JFrames.
 	public static JFrame dimensions=File.dimensions;
 	public static JFrame window=Maze.window;
-	
+	public static Thread t=Maze.t;
+//	public static int rows=Maze.rows;
+//	public static int columns=Maze.columns;
+	Maze gg=new Maze();
 	public StyleOptionsPanel(){
 		
 		StyleListener listener1=new StyleListener();
@@ -42,32 +45,38 @@ class StyleOptionsPanel extends JPanel{
 		saying=new JLabel("Enter Rows");
 		saying.setFont(new Font("Helvetica", Font.PLAIN, 36));
 		
-		add(field);
-		add(saying);	
+			
 	
-		StyleListener2 listener2=new StyleListener2();
-		field=new JTextField();
-		field.setPreferredSize(new Dimension(50,50));
-		field.addActionListener(listener2);
-		saying=new JLabel("Enter Columns");
-		saying.setFont(new Font("Helvetica", Font.PLAIN, 36));
+	//	StyleListener2 listener2=new StyleListener2();
+	//	field=new JTextField();
+	//	field.setPreferredSize(new Dimension(50,50));
+	//	field.addActionListener(listener2);
+	//	saying=new JLabel("Enter Columns");
+	//	saying.setFont(new Font("Helvetica", Font.PLAIN, 36));
 		
-		add(field);
-		add(saying);
+	//	add(field);
+	//	add(saying);
 		
 		//Below code: when click the JButton, the first JFrame (dimensions) will close and sets the second JFrame (window) visible
 		b1 = new JButton("Enter");
+		b1.addActionListener(listener1);
 		b1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				if(e.getSource()==b1){
 				//instead of *dimensions.dispose()*, could use dimensions.setVisible(false);
+					
 					dimensions.setVisible(false);
+				//	rows=a;
+				//	columns=a;
 					window.setVisible(true);
-					window.setEnabled(true);
+					//new Thread(new Maze()).start();
+					gg.Thread();
 					
 				}
 			}
 		});
+		add(field);
+		add(saying);
 		add(b1);
 		
 		setBackground(Color.cyan);
@@ -77,14 +86,14 @@ class StyleOptionsPanel extends JPanel{
 class StyleListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
 		//dimension is the integer that user inputed from the textfield in first JFrame (dimensions).
-			dimension=Integer.parseInt(field.getText());
-			
+		int	dimension=Integer.parseInt(field.getText());
+			a=dimension;
 		}
 }
-private class StyleListener2 implements ActionListener{
+/*private class StyleListener2 implements ActionListener{
 	public void actionPerformed(ActionEvent event){
 		dimension= Integer.parseInt(field.getText());
-		
+		a=dimension;
 	}
-}
+}*/
 }
