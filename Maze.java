@@ -16,94 +16,26 @@ import javax.swing.*;
  * will be stored.
  */
 
-class StyleOptionsPanel extends JPanel{
-	private JTextField field;
-	private JLabel saying;
-	public static JButton b1;
-	public static int dimension;
-	
-//added these fields from Maze class to this class to open/close JFrames.
-	public static JFrame dimensions=Maze.dimensions;
-	public static JFrame window=Maze.window;
-	
-	public StyleOptionsPanel(){
-		
-		StyleListener listener1=new StyleListener();
-		field= new JTextField(); 
-		field.setPreferredSize(new Dimension(50,50));
-		field.addActionListener(listener1);
-		saying=new JLabel("Enter Rows");
-		saying.setFont(new Font("Helvetica", Font.PLAIN, 36));
-		
-		add(field);
-		add(saying);	
-	
-		StyleListener2 listener2=new StyleListener2();
-		field=new JTextField();
-		field.setPreferredSize(new Dimension(50,50));
-		field.addActionListener(listener2);
-		saying=new JLabel("Enter Columns");
-		saying.setFont(new Font("Helvetica", Font.PLAIN, 36));
-		
-		add(field);
-		add(saying);
-		b1 = new JButton("Enter");
-		
-		//Below code: when click the JButton, the first JFrame (dimensions) will close and sets the second JFrame (window) visible
-		b1.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				if(e.getSource()==b1){
-			//instead of *dimensions.dispose()*, could use dimensions.setVisible(false);		
-					dimensions.dispose(); 
-					window.setVisible(true);
-				}
-			}
-		});
-		add(b1);
-		
-		setBackground(Color.cyan);
-		setPreferredSize(new Dimension(350, 100));
-		
-	}
-class StyleListener implements ActionListener{
-		public void actionPerformed(ActionEvent event){
-		//dimension is the integer that user inputed from the textfield in first JFrame (dimensions). 	
-			dimension=Integer.parseInt(field.getText());	
-		}
-}
-private class StyleListener2 implements ActionListener{
-	public void actionPerformed(ActionEvent event){
-		dimension= Integer.parseInt(field.getText());
-		
-	}
-}
-}
+
 public class Maze extends JPanel implements Runnable{
-	//Dont know why I initialized these JFrames up here.
-    static JFrame dimensions=new JFrame("Set Dimensions");
+		
     static JFrame window = new JFrame("DFS Random Maze Solve");
-	
-	//To reference dimension (user inputed) from StyleOptionsPanel class to Maze class.
+    
+    	//To reference dimension (user inputed) from StyleOptionsPanel class to Maze class.
     public static int dimension=StyleOptionsPanel.dimension;
-	
+    
     // Main method to run the program, 
 	//PRECONDITION: user must enter integer dimensions
 	//POST CONDITION: creates a maze of specified dimension and solves using DFS.
     public static void main(String[] args) {
-    	//Could've initialized JFrame dimensions here.
-    	dimensions.getContentPane().add(new StyleOptionsPanel());
-    	dimensions.pack();
-    	dimensions.setVisible(true);
-	    
-    	//Could've initialized JFrame window here.
+
         window.setContentPane(new Maze());
         window.pack();
         window.setLocation(120, 80);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-   
     
-   
+
     int[][] maze;   // This will create a state of a maze. A maze[i][j] can be
     				// used to represent a wall, path, empty, or visited
     				// section of a maze.
@@ -122,10 +54,10 @@ public class Maze extends JPanel implements Runnable{
     final static int visited = 4;
 
 
-    Color[] color; // an array of colors to be used for our maze values defined earlier.
-	
-	//*From earlier code above* ; rows and columns will equal to *dimension* that user inputed.
-	
+    Color[] color;          // an array of colors to be used for our maze values defined earlier.
+    
+    	//*From File class code* ; rows and columns will equal to *dimension* that user inputed.
+    
     int rows=dimension;          // the row of cells in a maze, including the walls
     int columns=dimension;       // number of column cells in a maze, including the walls
     int border = 0;         // number of pixels separating maze and non-maze parts  
@@ -158,7 +90,10 @@ public class Maze extends JPanel implements Runnable{
         };
         setBackground(color[bgcode]);
         setPreferredSize(new Dimension(cellsize*columns, cellsize*rows));
-        new Thread(this).start();
+      
+       
+        	new Thread(this).start();
+        
     }
 
     // Will prevent paint from being called two times, this method paints the maze and helps with Drawing

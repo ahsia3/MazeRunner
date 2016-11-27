@@ -13,13 +13,12 @@ import javax.swing.JTextField;
 
 
 public class File {
-
+	static JFrame dimensions=new JFrame("Set Dimensions");
 	public static void main(String[] args) {
-		JFrame dimensions=new JFrame("Set Dimensions");
+		dimensions=new JFrame("Set Dimensions");
     	dimensions.getContentPane().add(new StyleOptionsPanel());
     	dimensions.pack();
     	dimensions.setVisible(true);
-    	dimensions.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
 	}
 
@@ -27,41 +26,64 @@ public class File {
 class StyleOptionsPanel extends JPanel{
 	private JTextField field;
 	private JLabel saying;
-	private JButton push;
-	private int count;
-	private JLabel label;
+	public static JButton b1;
+	public static int dimension;
+	
+//added these fields from Maze class to this class to open/close JFrames.
+	public static JFrame dimensions=File.dimensions;
+	public static JFrame window=Maze.window;
+	
 	public StyleOptionsPanel(){
+		
 		StyleListener listener1=new StyleListener();
 		field= new JTextField(); 
 		field.setPreferredSize(new Dimension(50,50));
 		field.addActionListener(listener1);
 		saying=new JLabel("Enter Rows");
 		saying.setFont(new Font("Helvetica", Font.PLAIN, 36));
+		
 		add(field);
 		add(saying);	
 	
-		
+		StyleListener2 listener2=new StyleListener2();
 		field=new JTextField();
 		field.setPreferredSize(new Dimension(50,50));
-		field.addActionListener(listener1);
+		field.addActionListener(listener2);
 		saying=new JLabel("Enter Columns");
 		saying.setFont(new Font("Helvetica", Font.PLAIN, 36));
+		
 		add(field);
 		add(saying);
 		
-		push = new JButton("Enter");
-		add(push);
+		//Below code: when click the JButton, the first JFrame (dimensions) will close and sets the second JFrame (window) visible
+		b1 = new JButton("Enter");
+		b1.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				if(e.getSource()==b1){
+				//instead of *dimensions.dispose()*, could use dimensions.setVisible(false);
+					dimensions.setVisible(false);
+					window.setVisible(true);
+					 new Thread().start();
+				}
+			}
+		});
+		add(b1);
+		
 		setBackground(Color.cyan);
-		setPreferredSize(new Dimension(300, 100));
+		setPreferredSize(new Dimension(350, 100));
 		
 	}
-private class StyleListener implements ActionListener{
+class StyleListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
-			int font;
-			String text = field.getText();
-			font = Integer.parseInt(text);
-			saying.setFont(new Font("Helvetica", Font.PLAIN, font));
+		//dimension is the integer that user inputed from the textfield in first JFrame (dimensions).
+			dimension=Integer.parseInt(field.getText());
+			
 		}
 }
-
+private class StyleListener2 implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+		dimension= Integer.parseInt(field.getText());
+		
+	}
+}
 }
