@@ -21,8 +21,11 @@ class StyleOptionsPanel extends JPanel{
 	private JLabel saying;
 	public static JButton b1;
 	public static int dimension;
+	
+//added these fields from Maze class to this class to open/close JFrames.
 	public static JFrame dimensions=Maze.dimensions;
 	public static JFrame window=Maze.window;
+	
 	public StyleOptionsPanel(){
 		
 		StyleListener listener1=new StyleListener();
@@ -78,7 +81,10 @@ public class Maze extends JPanel implements Runnable{
 	//Dont know why I initialized these JFrames up here.
     static JFrame dimensions=new JFrame("Set Dimensions");
     static JFrame window = new JFrame("DFS Random Maze Solve");
+	
+	//To reference dimension (user inputed) from StyleOptionsPanel class to Maze class.
     public static int dimension=StyleOptionsPanel.dimension;
+	
     // Main method to run the program, 
 	//PRECONDITION: user must enter integer dimensions
 	//POST CONDITION: creates a maze of specified dimension and solves using DFS.
