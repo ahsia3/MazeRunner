@@ -74,7 +74,7 @@ private class StyleListener2 implements ActionListener{
 }
 }
 public class Maze extends JPanel implements Runnable{
-   static JFrame dimensions=new JFrame("Set Dimensions");
+    static JFrame dimensions=new JFrame("Set Dimensions");
     static JFrame window = new JFrame("DFS Random Maze Solve");
     public static int dimension=StyleOptionsPanel.dimension;
     // Main method to run the program, 
@@ -85,42 +85,15 @@ public class Maze extends JPanel implements Runnable{
     	dimensions.getContentPane().add(new StyleOptionsPanel());
     	dimensions.pack();
     	dimensions.setVisible(true);
-    
-  //      while(dimensions.equals(dimensions.setVisible(true))){
-       // 	please(window);
-   //     }
     	
         window.setContentPane(new Maze());
         window.pack();
         window.setLocation(120, 80);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+   
     
- //   public static void please(JFrame window){
-   // 	dimensions.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-   // 	window.setVisible(false);
-   // }
-    
-    
-  /*  public static boolean please1(boolean t){
-	 if(t==true){
-		 dimensions.setVisible(true);
-	 }else{
-		 dimensions.setVisible(false);
-	 }
-	 return false;
-    }*/
-    
-    
-  //  public static boolean open(){
-   //      a = dimensions.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-  //  	if(a.equals("true")){
-  //  		return true;
-  //  	}else{
- //   		return false;
- //   	}
- //   }
-
+   
     int[][] maze;   // This will create a state of a maze. A maze[i][j] can be
     				// used to represent a wall, path, empty, or visited
     				// section of a maze.
