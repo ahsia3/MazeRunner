@@ -53,7 +53,8 @@ class StyleOptionsPanel extends JPanel{
 		b1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				if(e.getSource()==b1){
-					dimensions.dispose();
+			//instead of *dimensions.dispose()*, could use dimensions.setVisible(false);		
+					dimensions.dispose(); 
 					window.setVisible(true);
 				}
 			}
