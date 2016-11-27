@@ -31,6 +31,7 @@ public class Maze extends JPanel implements Runnable{
     	File.main(args);
         window.setContentPane(new Maze());
         window.pack();
+        window.setEnabled(false);
         window.setLocation(120, 80);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

@@ -63,6 +63,7 @@ class StyleOptionsPanel extends JPanel{
 				//instead of *dimensions.dispose()*, could use dimensions.setVisible(false);
 					dimensions.setVisible(false);
 					window.setVisible(true);
+					window.setEnabled(true);
 					
 				}
 			}
