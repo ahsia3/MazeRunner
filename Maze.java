@@ -40,13 +40,13 @@ public class Maze extends JPanel implements Runnable{
     		temp1=b+3;
     	}
         else{
-        	temp1=b;
+        	temp1=b+2;
         }
     	if(c % 2 == 0){
     		temp2=c+3;
     	}
     	else{
-    		temp2 = c;
+    		temp2 = c+2;
     	}
     	File.main(args);
     	

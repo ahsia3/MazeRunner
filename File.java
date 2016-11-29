@@ -71,10 +71,10 @@ class StyleOptionsPanel extends JPanel{
 		
 		JLabel saying6=new JLabel();
 		saying6.setFont(new Font("Helvetica", Font.PLAIN, 20));
-		saying6.setText("(+3 if inputed even #)= ");
+		saying6.setText("(+3 even/+2 odd) = ");
 		JLabel saying7=new JLabel();
 		saying7.setFont(new Font("Helvetica", Font.PLAIN, 20));
-		saying7.setText("(+3 if inputed even #)= ");
+		saying7.setText("(+3 even/+2 odd) = ");
 		
 		add(saying5);
 		add(saying6);
