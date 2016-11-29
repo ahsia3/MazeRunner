@@ -55,11 +55,11 @@ class StyleOptionsPanel extends JPanel{
 			}
 		});
 		saying2=new JLabel();
-		saying2.setText(String.valueOf(temp1));
+		saying2.setText(String.valueOf(b));
 		saying2.setFont(new Font("Helvetica", Font.PLAIN, 20));
 		//add(field);
 		JLabel saying3=new JLabel();
-		saying3.setText(String.valueOf(temp2));
+		saying3.setText(String.valueOf(c));
 		saying3.setFont(new Font("Helvetica", Font.PLAIN, 20));
 		
 		JLabel saying4=new JLabel("Columns");
@@ -67,20 +67,13 @@ class StyleOptionsPanel extends JPanel{
 		
 		JLabel saying5=new JLabel("You Inputed: ");
 		saying5.setFont(new Font("Helvetica", Font.PLAIN, 40));
-		
-		
-		JLabel saying6=new JLabel();
-		saying6.setFont(new Font("Helvetica", Font.PLAIN, 20));
-		saying6.setText("(+3 even/+2 odd) = ");
-		JLabel saying7=new JLabel();
-		saying7.setFont(new Font("Helvetica", Font.PLAIN, 20));
-		saying7.setText("(+3 even/+2 odd) = ");
+	
 		
 		add(saying5);
-		add(saying6);
+	
 		add(saying2);
 		add(saying);
-		add(saying7);
+	
 		add(saying3);
 		add(saying4);
 		add(b1);
